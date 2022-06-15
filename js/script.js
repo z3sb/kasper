@@ -17,6 +17,7 @@ right.addEventListener('click', () => {
 })
 left.addEventListener('click', () => {
   --index;
+  if (index < 1) index = 1;
   changeLiActive(index)
   landing.style.backgroundImage = `url(./images/landing${index}.png)`;
 })
