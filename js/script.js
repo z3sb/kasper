@@ -5,21 +5,24 @@ menu.addEventListener("click", () => {
 })
 
 // Change Landing Image In The Left and Right Buttons
-let left = document.getElementById('left');
-let right = document.getElementById('right');
-let landing = document.getElementById('landing')
+const landing = document.getElementById('landing')
 let index = 1;
-right.addEventListener('click', () => {
-  ++index;
-  if (index > 3) index = 1;
-  changeLiActive(index)
-  landing.style.backgroundImage = `url(./images/landing${index}.png)`;
-})
-left.addEventListener('click', () => {
-  --index;
-  if (index < 1) index = 1;
-  changeLiActive(index)
-  landing.style.backgroundImage = `url(./images/landing${index}.png)`;
+landing.addEventListener('click', (event) => {
+  let target = event.target;
+  switch (target.id){
+    case 'left':
+      --index;
+      if (index < 1) index = 3;
+      changeLiActive(index)
+      landing.style.backgroundImage = `url(./images/landing${index}.png)`;
+      break;
+    case 'right':
+      ++index;
+      if (index > 3) index = 1;
+      changeLiActive(index)
+      landing.style.backgroundImage = `url(./images/landing${index}.png)`;
+      break;
+}
 })
 function changeLiActive(n){
   let bullets = document.querySelectorAll('.landing .bullets li');
